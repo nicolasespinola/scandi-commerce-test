@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import APIcategories from './components/APIcategories';
+import gql from 'graphql-tag';
+import { ApolloProvider, Query } from 'react-apollo';
+import NavBar from './components/NavBar';
 
 // apollo client setup
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql'
+    uri: 'http://localhost:4000/graphql',
 });
 
+
 class App extends Component {
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <div>
-          Hello Old Component Class!
-                  <APIcategories/>
-        </div>
-      </ApolloProvider>
-    );
-  }
+    render() {
+        return (
+            <ApolloProvider client={client}>
+              <NavBar/>
+            </ApolloProvider>
+        );
+    }
 }
 
 export default App;
