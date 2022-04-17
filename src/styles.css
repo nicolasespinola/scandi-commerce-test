@@ -1,6 +1,10 @@
 /* Imports */
+
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 /* Divs and images */
 
 .navbar-wrapper {
@@ -78,6 +82,57 @@
     transition: 500ms;
 }
 
+.product-images {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-preview{
+    height: 690px;
+    width: 690px;
+    margin-left: 50px;
+    margin-right: 50px;
+    object-fit: cover;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+}
+
+.product-attributes {
+    display: flex;
+}
+
+.product-attribute-text {
+    font-family: Source Sans Pro;
+    min-width: 63px;
+    min-height: 45px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #1D1F22;
+    padding-left: 2px;
+    padding-right: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+}
+
+.product-attribute-swatch {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+}
+
+.product-attribute-text-selected {
+    min-width: 63px;
+    min-height: 45px;
+}
+
+
 /* colours */
 
 .c-primary {
@@ -98,6 +153,14 @@ a {
     text-decoration: none !important;
 }
 
+h1 {
+    font-family: Raleway;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
 h2 {
     font-family: 'Raleway';
     font-size: 42px;
@@ -105,7 +168,18 @@ h2 {
     line-height: 67px;
     letter-spacing: 0px;
     text-align: left;
+    margin: 0;
     text-transform: uppercase;
+}
+
+h3 {
+    font-family: Raleway;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0;
+    text-transform: capitalize;
 }
 
 .label {
@@ -150,21 +224,32 @@ h2 {
     padding-top: 25px;
     font-family: Raleway;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 300 !important;
     line-height: 29px;
     letter-spacing: 0px;
     text-align: left;
+    color:#1D1F22 !important;
 }
 
 .product-card-price {
     font-family: Raleway;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 500 !important;
     line-height: 29px;
     letter-spacing: 0em;
     text-align: right;
+    color:#1D1F22 !important;
 }
 
+.product-span {
+    font-family: 'Roboto Condensed';
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-transform: uppercase;
+}
 /* Cursor */
 
 * {
@@ -193,6 +278,7 @@ h2 {
 
 .image-hover:hover {
     transform: scale(1.09);
+    opacity: 0.6;
     transition: 500ms;
 }
 

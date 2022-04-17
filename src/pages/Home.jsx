@@ -1,5 +1,6 @@
 import { graphql } from 'react-apollo';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import ProductCard from '../components/ProductCard';
 import { getCategories } from '../queries/queries';
@@ -12,7 +13,6 @@ class Home extends Component {
             categories: null,
             loading: true,
             selected: this.props.selected,
-
         };
     }
     componentWillMount() {
@@ -28,13 +28,13 @@ class Home extends Component {
             this.forceUpdate();
         }
 
-        if(prevState.selected!==this.state.selected) {
+        if (prevState.selected !== this.state.selected) {
             this.forceUpdate();
         }
     }
     render() {
         return (
-            <div style={{height:'2390px'}}>
+            <div style={{ height: '2390px' }}>
                 {this.state.loading ? (
                     <div className="loader">
                         <img src={Logo} className="pulse" alt="Loading icon" />
@@ -47,22 +47,29 @@ class Home extends Component {
                             categories={this.state.categories}
                             selected={this.state.selected}
                         ></NavBar>
-                        <h2 className='make-some-margin'>
+                        <h2 className="make-some-margin">
                             {this.state.categories[this.state.selected].name}
                         </h2>
-                        <div className='product-grid'>
-                            {this.state.categories[this.state.selected].products.map((product) => {
+                        <div className="product-grid">
+                            {this.state.categories[
+                                this.state.selected
+                            ].products.map((product) => {
                                 return (
-                                    <ProductCard
-                                        name={product.name}
-                                        cover={product.gallery}
-                                        inStock={product.inStock}
-                                        price={product.prices[0]}
-                                    />
+                                    <Link
+                                        to={`/product?id=${product.id}`}
+                                        onClick={this.forceUpdate}
+                                    >
+                                        <ProductCard
+                                            id={product.id}
+                                            name={product.name}
+                                            cover={product.gallery[0]}
+                                            inStock={product.inStock}
+                                            price={product.prices[0]}
+                                        />
+                                    </Link>
                                 );
                             })}
                         </div>
-                        
                     </div>
                 )}
             </div>

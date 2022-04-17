@@ -12,17 +12,16 @@ export default class ProductCard extends React.Component {
     }
     render() {
         return (
-            <div
-                className="product-card"
-                id="card"
-                onMouseEnter={() => {
-                    this.setState({ cart: true, firstDisplay: true });
-                }}
-                onMouseLeave={() => {
-                    this.setState({ cart: false });
-                }}
-            >
-                <Link to={'/'} onClick={this.forceUpdate}>
+                <div
+                    className="product-card"
+                    id="card"
+                    onMouseEnter={() => {
+                        this.setState({ cart: true, firstDisplay: true });
+                    }}
+                    onMouseLeave={() => {
+                        this.setState({ cart: false });
+                    }}
+                >
                     <img
                         src={addButton}
                         alt="Add to cart"
@@ -31,18 +30,20 @@ export default class ProductCard extends React.Component {
                         } ${!this.state.firstDisplay ? 'hidden' : ''}`}
                         id="addButton"
                     />
-                </Link>
 
-                <div style={{ overflow: 'hidden', width: '100%' }}>
-                    <img
-                        src={this.props.cover[0]}
-                        alt="cover"
-                        className="product-cover image-hover"
-                    />
+                    <div style={{ overflow: 'hidden', width: '100%' }}>
+                        <img
+                            src={this.props.cover}
+                            alt="cover"
+                            className="product-cover image-hover"
+                        />
+                    </div>
+                    <span className="product-card-title">
+                        {this.props.name}
+                    </span>
+                    <span className="product-card-price">{`${this.props.price.currency.symbol} ${this.props.price.amount}`}</span>
                 </div>
-                <span className="product-card-title">{this.props.name}</span>
-                <span className="product-card-price">{`${this.props.price.currency.symbol} ${this.props.price.amount}`}</span>
-            </div>
+
         );
     }
 }
