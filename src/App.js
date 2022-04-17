@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
-import gql from 'graphql-tag';
-import { ApolloProvider, Query } from 'react-apollo';
-import NavBar from './components/NavBar';
-
+import { ApolloProvider} from 'react-apollo';
+import Home from './pages/Home.jsx'
 // apollo client setup
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
-});
+})
 
 
 class App extends Component {
+    constructor(props) {
+      super(props)
+    }
     render() {
         return (
             <ApolloProvider client={client}>
-              <NavBar/>
+              <Home selected={this.props.selected}/>
             </ApolloProvider>
         );
     }
 }
 
-export default App;
+export default (App);
