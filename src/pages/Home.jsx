@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import ProductCard from '../components/ProductCard';
 import { getCategories } from '../queries/queries';
 import Logo from '../assets/ui/logo-ui.svg';
+import CartOverlay from '../components/CartOverlay';
 
 class Home extends Component {
     constructor(props) {
@@ -47,6 +48,7 @@ class Home extends Component {
                             categories={this.state.categories}
                             selected={this.state.selected}
                         ></NavBar>
+                        <CartOverlay items={JSON.parse(localStorage.getItem('cart'))}/>
                         <h2 className="make-some-margin">
                             {this.state.categories[this.state.selected].name}
                         </h2>
@@ -55,10 +57,7 @@ class Home extends Component {
                                 this.state.selected
                             ].products.map((product) => {
                                 return (
-                                    <Link
-                                        to={`/product?id=${product.id}`}
-                                        onClick={this.forceUpdate}
-                                    >
+
                                         <ProductCard
                                             id={product.id}
                                             name={product.name}
@@ -66,7 +65,7 @@ class Home extends Component {
                                             inStock={product.inStock}
                                             price={product.prices[0]}
                                         />
-                                    </Link>
+                                    
                                 );
                             })}
                         </div>

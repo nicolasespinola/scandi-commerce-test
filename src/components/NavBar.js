@@ -41,7 +41,14 @@ class NavBar extends React.Component {
                         alt="Current currency"
                         className="w-40p"
                     />
-                    <img src={Cart} alt="My cart" width={'25px'} />
+                    {JSON.parse(localStorage.getItem('cart')) ? (
+                        <div>
+                            <div className='cart-bobble c-white'>{JSON.parse(localStorage.getItem('cart')).length}</div>
+                            <img src={Cart} alt="My cart" width={'25px'} />
+                        </div>
+                    ) : (
+                        <img src={Cart} alt="My cart" width={'25px'} />
+                    )}
                 </div>
             </div>
         );
